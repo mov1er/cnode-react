@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { NavBar, Drawer } from 'antd-mobile';
 import logo from './assets/images/category.svg';
-import Sidebar from './components/sidebar';
+import Sidebar from './components/sidebar.jsx';
+import NewsItem from './components/newsItem';
+
+let lists = [];
+
 
 class App extends Component {
   constructor(...args) {
@@ -9,8 +13,18 @@ class App extends Component {
     this.state = {
       initData: '',
       show: false,
-      open: true
+      open: false,
+      fetched: false
     };
+  }
+
+  componentWillMount() {
+    fetch(`https://cnodejs.org/api/v1/topics?`)
+      .then(res => res.json())
+      .then(res => {
+        lists = res.data;
+        this.setState({fetched: true});
+      })
   }
 
   handleClick = (e) => {
@@ -46,8 +60,13 @@ class App extends Component {
           onClick={this.fuck}
           onOpenChange={this.onOpenChange}
         >
-          Click upper-left corner123123
-          </Drawer>
+          
+          { this.state.fetched &&
+            lists.map((item, k) => {
+              return <NewsItem list={item} key={k}/>
+            })
+          }
+        </Drawer>
       </div>
     );
   }

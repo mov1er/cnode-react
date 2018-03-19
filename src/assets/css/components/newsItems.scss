@@ -1,0 +1,82 @@
+.newsItem{
+  color: #333;
+  padding: 10px;
+  background: #fff;
+  position: relative;
+  &::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    width: 100vw;
+    height: 0;
+    transform: scaleY(.5);
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .title{
+    text-align: left;
+    margin-bottom: 10px;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 24px;
+    line-height: 24px;
+    font-weight: 900;
+    position: relative;
+    &[title]{
+      padding-left: 45px;
+    }
+    &::before{
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      padding: 0 5px;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: normal;
+    }
+    &[title='top']:before{
+      background: #E74C3C;
+      content: '置顶';
+    }
+    &[title='ask']:before{
+      background: #159951;
+      content: '问答';
+    }
+    &[title='share']:before{
+      background: #03A9F4;
+      content: '分享';
+    }
+    &[title='job']:before{
+      background: #C898DE;
+      content: '招聘';
+    }
+    &[title='good']:before{
+      background: #EFBD05;
+      content: '精华';
+    }
+    &[title='default']:before{
+      display: none;
+    }
+  }
+  .content{
+    overflow: hidden;
+  }
+  .avatar{
+    width: 50px;
+    height: 50px;
+    display: block;
+    flex-shrink: 1;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  .detail{
+    flex-grow: 1;
+    flex-direction: column;
+    .flexBox{
+      justify-content: space-between;
+    }
+  }
+}

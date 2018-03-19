@@ -8,10 +8,13 @@
   position: relative;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  .am-drawer-content{
+    padding-top: 0 !important;
+  }
   .am-drawer-sidebar {
     background-color: #fff;
     overflow: auto;
-    width: 70%;
+    width: 180px;
     -webkit-overflow-scrolling: touch;
     .am-list {
       width: 100%;
